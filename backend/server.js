@@ -28,7 +28,7 @@ app.use(express.json())
 app.use(morgan('dev'));
 app.use(cookieParser())
 app.use(cors({
-    origin: "http://localhost:5173", // Allow only this frontend
+    origin: "http://localhost:5174", // Allow only this frontend
     credentials: true, // Allow cookies
 }));
 
