@@ -124,7 +124,7 @@ const Home = () => {
     return (
         <>
             <Nav />
-            <div className='container mx-auto grid grid-cols-12 text-white h-[90vh] '>
+            <div className='container mx-auto grid grid-cols-12 text-white h-[100vh] '>
                 <div className='col-span-12 md:col-span-6 my-auto video-home'>
                     <video
                         src={video}

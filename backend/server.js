@@ -28,9 +28,11 @@ app.use(express.json())
 app.use(morgan('dev'));
 app.use(cookieParser())
 app.use(cors({
-    origin: "http://localhost:5174", // Allow only this frontend
-    credentials: true, // Allow cookies
-}));
+    origin: "https://money-mind-gamma.vercel.app", // Allow only this frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'], //
+    credentials: true //
+    }));
 
 // Connecting Routes
 app.use('/api/user', userRoutes)
@@ -41,8 +43,9 @@ app.use('/api/budget', budgetRoutes)
 app.use('/api/trans', transRoutes)
 app.use('/api/special', specialRoutes)
 
+app.get('/', (req, res) => {
+    res.json(JSON.stringify("Hello Dear User You Found Our Backend"))
+})
+
 // Server Creation
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`The server is running on port: ${PORT}`);
-});
+module.exports = app;

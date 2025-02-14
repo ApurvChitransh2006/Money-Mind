@@ -67,7 +67,7 @@ const Contact = () => {
     return (
         <>
             <Nav />
-            <div className='container mx-auto grid grid-cols-12 text-white my-10 relative'>
+            <div className='container mx-auto grid grid-cols-12 text-white my-10 mt-20 relative'>
                 <div className='col-span-12 md:col-span-4 px-3 hidden md:block'>
                     <div className='animate-left text-3xl mb-8'>Talk with our sales team</div>
                     <div className='animate-left'>Get in touch with our dedicated sales team for personalized assistance. Whether you have questions, need more information about our products or services, or are ready to get started, we're here to help. Reach out today, and we'll ensure you receive the support you need to make the best decision for your business.</div>

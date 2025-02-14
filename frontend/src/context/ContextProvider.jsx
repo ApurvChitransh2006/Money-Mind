@@ -13,12 +13,25 @@ const ContextProvider = ({ children }) => {
     const getTransactionlist = async () => {
         try {
             const data = await axiosInstance.get(`/trans/${user._id}`);
-            setTransactionList(data.data.reverse())
-            console.log(transactionList)
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth();
+            const currentYear = currentDate.getFullYear();
+
+            // Filter transactions for the current month and year
+            const filteredTransactions = data.data.filter(transaction => {
+                const transactionDate = new Date(transaction.date);
+                return (
+                    transactionDate.getMonth() === currentMonth &&
+                    transactionDate.getFullYear() === currentYear
+                );
+            });
+
+            setTransactionList(filteredTransactions.reverse());
+            console.log(filteredTransactions);
         } catch (e) {
-            console.log(e)
+            console.log(e);
         }
-    }
+    };
 
     useEffect(() => {
         const calc = () => {

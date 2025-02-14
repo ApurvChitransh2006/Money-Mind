@@ -34,9 +34,9 @@ router.post('/login', async (req, res) => {
         );
 
         res.cookie("token", token, {
-            httpOnly: true, // Prevents JavaScript access (more secure)
-            secure: process.env.NODE_ENV === "production", // Only send in HTTPS
-            sameSite: "Strict", // Prevent CSRF attacks
+            httpOnly: true,
+            secure: true,  // Must be true for cross-origin cookies
+            sameSite: "None", // Allows cross-site requests
         });
 
         // Send token in response
@@ -48,11 +48,10 @@ router.post('/login', async (req, res) => {
 
 // A route for logging out 
 router.post('/logout', (req, res) => {
-    res.cookie("token", "", {
+    res.clearCookie("token", {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "Strict",
-        expires: new Date(0) // Expire immediately
+        secure: true,  // Ensure it's true for production (HTTPS)
+        sameSite: "None" // Allows cross-origin cookie deletion
     });
 
     res.json({ msg: "Logout successful" });

@@ -15,11 +15,17 @@ function BudgetSetter() {
     const budgetDataLoader = async () => {
         try {
             const response = await axiosInstance.get(`/budget/${user._id}`);
-            setBudgetData(response.data);
+            const currentMonth = new Date().toISOString().slice(0, 7); // Gets "YYYY-MM"
+
+            // Filter budget data for the current month
+            const filteredBudget = response.data.filter(budget => budget.month === currentMonth);
+
+            setBudgetData(filteredBudget);
         } catch (err) {
             console.error("Error fetching budget data:", err);
         }
     };
+
 
     useEffect(() => {
         budgetDataLoader();

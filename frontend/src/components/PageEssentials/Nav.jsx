@@ -73,7 +73,10 @@ const Nav = () => {
                 className="nav-menu fixed h-[100vh] w-[100vw] sm:w-[50vw] md:w-[35vw] lg:w-[25vw] bg-white/20 backdrop-blur-md rounded-s-lg shadow-lg border border-white/30 top-0 right-[-100vw] flex items-center justify-center md:justify-start transition-all z-50"
             >
                 <div className="flex flex-col gap-5 p-5 nav-links">
-                    {['Home', 'About', 'Contact', 'Sign-In', 'Sign-Up'].map((text, index) => (
+                    <Link onMouseEnter={linkBig} onMouseLeave={linkNormal} onClick={() => { tl2.current.timeScale(3).reverse(); }} to={`/`} className="text-white text-xl sm:text-2xl">
+                        Home
+                    </Link>
+                    {['About', 'Contact', 'Sign-In', 'Sign-Up'].map((text, index) => (
                         <Link key={index} onMouseEnter={linkBig} onMouseLeave={linkNormal} onClick={() => { tl2.current.timeScale(3).reverse(); }} to={`/${text.toLowerCase().replace('-', '')}`} className="text-white text-xl sm:text-2xl">
                             {text}
                         </Link>
@@ -81,7 +84,7 @@ const Nav = () => {
                 </div>
                 <IoClose
                     className="text-white absolute text-3xl sm:text-4xl top-5 right-5 cursor-pointer"
-                    onClick={() => { tl2.current.timeScale(2).reverse(); enableScroll(); }}
+                    onClick={() => { tl2.current.timeScale(2).reverse(); }}
                 />
             </div>
         </nav>
